@@ -2,7 +2,7 @@
 //Connect to database
 require'connectDB.php';
 
-// select passenger 
+// chọn người dùng
 if (isset($_GET['select'])) {
 
     $Finger_id = $_GET['Finger_id'];
@@ -122,7 +122,7 @@ if (isset($_POST['Add'])) {
                 }
             }
             else{
-                echo "Dấu vân tay này đã được thêm ^.^";
+                echo 'Dấu vân tay đã được thêm!';
                 exit();
             }    
         }
@@ -202,7 +202,7 @@ if (isset($_POST['Add_fingerID'])) {
                     }   
                 }
                 else{
-                    echo "ID này đã tồn tại!hãy thử id khác";
+                    echo "ID này đã tồn tại!";
                     exit();
                 }
             }
@@ -213,7 +213,7 @@ if (isset($_POST['Add_fingerID'])) {
         }
     }
 }
-// Update an existance user 
+// Cập nhật người dùng hiện tại
 if (isset($_POST['Update'])) {
 
     $Uname = $_POST['name'];
@@ -239,21 +239,21 @@ if (isset($_POST['Update'])) {
         $resultl = mysqli_stmt_get_result($result);
         if ($row = mysqli_fetch_assoc($resultl)) {
 
-            if (empty($row['username'])) {
-                echo "First, You need to add the User!";
+            if (empty($row['username'])) {//nếu username trống trong spl ---> thông báo
+                echo "Bạn cần thêm người dùng!";
                 exit();
             }
-            else{
-                if (empty($Uname) && empty($Number) && empty($Email) && empty($Timein)) {
-                    echo "Empty Fields";
+            else{//Nếu có người dùng tiếp tục check
+                if (empty($Uname) && empty($Number) && empty($Email) && empty($Timein)) {// nếu không có những phần này tong spl ---báo lỗi --- thoát
+                    echo "....";
                     exit();
                 }
                 else{
-                    //check if there any user had already the Serial Number
+                    //kiểm tra xem có người dùng nào đã có Số sê-ri không
                     $sql = "SELECT serialnumber FROM users WHERE serialnumber=?";
                     $result = mysqli_stmt_init($conn);
                     if (!mysqli_stmt_prepare($result, $sql)) {
-                        echo "SQL_Error";
+                        echo "SQL_Error";//khong có MSV---> báo lỗi + thoát
                         exit();
                     }
                     else{
@@ -262,25 +262,25 @@ if (isset($_POST['Update'])) {
                         $resultl = mysqli_stmt_get_result($result);
                         if (!$row = mysqli_fetch_assoc($resultl)) {
 
-                            if (!empty($Uname) && !empty($Email) && !empty($Timein)) {
+                            if (!empty($Uname) && !empty($Email) && !empty($Timein)) {///kiểm tra các giá trị nếu không rỗng-->
 
-                                $sql="UPDATE users SET username=?, serialnumber=?, gender=?, email=?, time_in=? WHERE fingerprint_select=1";
+                                $sql="UPDATE users SET username=?, serialnumber=?, gender=?, email=?, time_in=? WHERE fingerprint_select=1";//update thông tin đưa ra thông báo
                                 $result = mysqli_stmt_init($conn);
-                                if (!mysqli_stmt_prepare($result, $sql)) {
-                                    echo "SQL_Error_select_Fingerprint";
+                                if (!mysqli_stmt_prepare($result, $sql)) {// nếu xảy ra lỗi khi truy vấn
+                                    echo "SQL_Error_:((";// thông báo
                                     exit();
                                 }
                                 else{
-                                    mysqli_stmt_bind_param($result, "sdsss", $Uname, $Number, $Gender, $Email, $Timein );
+                                    mysqli_stmt_bind_param($result, "sdsss", $Uname, $Number, $Gender, $Email, $Timein );// nếu không có lỗi khi truy vấn-- thay đổi thông tin người dùng
                                     mysqli_stmt_execute($result);
 
-                                    echo "The selected User has been updated!";
+                                    echo "Thông tin người dùng đã được thay đổi";// đưa ra thông báo
                                     exit();
                                 }
                             }
                             else{
                                 if (!empty($Timein)) {
-                                    $sql="UPDATE users SET gender=?, time_in=? WHERE fingerprint_select=1";
+                                    $sql="UPDATE users SET gender=?, time_in=? WHERE fingerprint_select=1";// tương tự như phần trên nhưng ở đây là giới tính và time_in
                                     $result = mysqli_stmt_init($conn);
                                     if (!mysqli_stmt_prepare($result, $sql)) {
                                         echo "SQL_Error_select_Fingerprint";
@@ -290,18 +290,18 @@ if (isset($_POST['Update'])) {
                                         mysqli_stmt_bind_param($result, "ss", $Gender, $Timein );
                                         mysqli_stmt_execute($result);
 
-                                        echo "The selected User has been updated!";
+                                        echo "Người dùng đã được cập nhật!";
                                         exit();
                                     }
                                 }
-                                else{
-                                    echo "The User Time-In is empty!";
+                                /*else{
+                                    echo "Trống phần tin thời gian vào!";
                                     exit();
-                                }    
+                                }   */ 
                             }  
                         }
                         else {
-                            echo "The serial number is already taken!";
+                            echo "MSV đã được sử dụng!";
                             exit();
                         }
                     }
@@ -309,7 +309,7 @@ if (isset($_POST['Update'])) {
             }    
         }
         else {
-            echo "There's no selected User to update!";
+            echo "Hãy chọn người dùng để cập nhật!";
             exit();
         }
     }
@@ -319,28 +319,28 @@ if (isset($_POST['delete'])) {
 
     $sql = "SELECT fingerprint_select FROM users WHERE fingerprint_select=1";
     $result = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($result, $sql)) {
+    if (!mysqli_stmt_prepare($result, $sql)) {// truy vấn đến spl cột  fingerprint_select bảng users tại vị trí WHERE fingerprint_select=1 nếu sai đưa ra thông báo và thoát
         echo "SQL_Error_Select";
         exit();
     }
     else{
-        mysqli_stmt_execute($result);
+        mysqli_stmt_execute($result);// nếu chuẩn bị thành công .....
         $resultl = mysqli_stmt_get_result($result);
         if ($row = mysqli_fetch_assoc($resultl)) {
-            $sql="UPDATE users SET del_fingerid=1 WHERE fingerprint_select=1";
+            $sql="UPDATE users SET del_fingerid=1 WHERE fingerprint_select=1";//update  del_fingerid=1 ở những dòng fingerprint_select=1
             $result = mysqli_stmt_init($conn);
-            if (!mysqli_stmt_prepare($result, $sql)) {
+            if (!mysqli_stmt_prepare($result, $sql)) {// kiểm tra ko đủ điều kị báo lỗi --> thoát
                 echo "SQL_Error_delete";
                 exit();
             }
             else{
                 mysqli_stmt_execute($result);
-                echo "The User Fingerprint has been deleted";
+                echo "Đã xóa vân tay người dùng!";// đã đủ đk (đã thay đổi ở sql)--> hiển thị thông báo
                 exit();
             }
         }
         else{
-            echo "Select a User to remove";
+            echo "Chọn người dùng để xóa";
             exit();
         }
     }

@@ -11,12 +11,6 @@
 </div>
 
 <div class="topnav" id="myTopnav">
-	<a href="index.php">Học sinh</a>
-    <a href="UsersLog.php">Lịch sử</a>
-    <a href="ManageUsers.php">Quản lí</a>
-	<a href="logout.php">Đăng xuất</a>
-    <a href="javascript:void(0);" class="icon" onclick="navFunction()">
-	  <i class="fa fa-bars"></i></a>
 </div>
 
 </header>

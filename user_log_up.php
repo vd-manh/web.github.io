@@ -26,7 +26,7 @@ session_start();
       #$sql = "SELECT * FROM users_logs WHERE checkindate='$seldate' ORDER BY id DESC";
       #$result = mysqli_stmt_init($conn);
 	  
-	  $sql = "SELECT *, TIME(CONVERT_TZ(timein, '+00:00', '+05:00')) AS local_timein, TIME(CONVERT_TZ(timeout, '+00:00', '+05:00')) AS local_timeout  
+	  $sql = "SELECT *, TIME(CONVERT_TZ(timein, '+00:00', '+00:00')) AS local_timein, TIME(CONVERT_TZ(timeout, '+00:00', '+00:00')) AS local_timeout  
         FROM users_logs 
         WHERE checkindate='$seldate' 
         ORDER BY id DESC";

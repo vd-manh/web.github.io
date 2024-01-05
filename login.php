@@ -1,4 +1,5 @@
 <?php
+///các logic lien quan đến đăng nhập admin
 session_start();
 if (isset($_SESSION['Admin-name'])) {
   header("location: index.php");
@@ -7,7 +8,7 @@ if (isset($_SESSION['Admin-name'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Log In</title>
+    <title>Đăng nhập</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="icons/atte1.jpg">
@@ -26,62 +27,42 @@ if (isset($_SESSION['Admin-name'])) {
           $('h1').animate({height: "toggle", opacity: "toggle"}, "slow");
         });
       });
-    </script>
+    </script>   
 </head>
 <body>
-<?php include'header.php'; ?> 
+<?php include'bglogin.php'; ?> 
 <main>
-  <h1 class="slideInDown animated">Đăng nhập với tài khoản Admin</h1>
-  <h1 class="slideInDown animated" id="reset">Please, Enter your Email to send the reset password link</h1>
+  <h1 class="slideInDown animated">Đăng nhập với tài khoản Admin</h1> <!--để sửa các thẻ bên này tìm đúng tên thẻ been css để sửa giao diện->
+  
 <!-- Log In -->
 <section>
   <div class="slideInDown animated">
     <div class="login-page">
       <div class="form">
         <?php  
-          if (isset($_GET['error'])) {
+        //kiem tra loi va thong bao
+          if (isset($_GET['error'])) {// lỗi này là nhập không đúng định dạng mail
             if ($_GET['error'] == "invalidEmail") {
                 echo '<div class="alert alert-danger">
-                        This E-mail is invalid!!
+                        Email sai định dạng!
                       </div>';
             }
             elseif ($_GET['error'] == "sqlerror") {
                 echo '<div class="alert alert-danger">
-                        There a database error!!
+                        Lỗi cơ sợ dữ liệu!!
                       </div>';
             }
             elseif ($_GET['error'] == "wrongpassword") {
                 echo '<div class="alert alert-danger">
-                        Wrong password!!
+                        Sai mật khẩu!!
                       </div>';
             }
             elseif ($_GET['error'] == "nouser") {
                 echo '<div class="alert alert-danger">
-                        This E-mail does not exist!!
+                        Email không tồn tại!!
                       </div>';
             }
-          }
-          if (isset($_GET['reset'])) {
-            if ($_GET['reset'] == "success") {
-                echo '<div class="alert alert-success">
-                        Check your E-mail!
-                      </div>';
-            }
-          }
-          if (isset($_GET['account'])) {
-            if ($_GET['account'] == "activated") {
-                echo '<div class="alert alert-success">
-                        Please Login
-                      </div>';
-            }
-          }
-          if (isset($_GET['active'])) {
-            if ($_GET['active'] == "success") {
-                echo '<div class="alert alert-success">
-                        The activation like has been sent!
-                      </div>';
-            }
-          }
+          }         
         ?>
         <div class="alert1"></div>
         <form class="reset-form" action="reset_pass.php" method="post" enctype="multipart/form-data">

@@ -1,7 +1,7 @@
 <?php  
 //Connect to database
 require 'connectDB.php';
-date_default_timezone_set('Asia/Damascus');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 $d = date("Y-m-d");
 $t = date("H:i:sa");
 
@@ -21,7 +21,8 @@ if (isset($_POST['FingerID'])) {
         $resultl = mysqli_stmt_get_result($result);
         if ($row = mysqli_fetch_assoc($resultl)){
             //*****************************************************
-            //An existed fingerprint has been detected for Login or Logout
+            //kiểm tra đăng nhập hoặc đăng xuất
+            
             if ($row['username'] != "Name"){
                 $Uname = $row['username'];
                 $Number = $row['serialnumber'];

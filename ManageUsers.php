@@ -10,7 +10,7 @@ if (!isset($_SESSION['Admin-name'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Manage Users</title>
+	<title>Quản lí</title>
 <link rel="stylesheet" type="text/css" href="css/manageusers.css">
 <script>
   $(window).on("load resize ", function() {
@@ -53,7 +53,7 @@ if (!isset($_SESSION['Admin-name'])) {
 			<fieldset>
 			<legend><span class="number">1</span> ID học sinh</legend>
 				<label>Vui lòng nhập id từ 1 đến 127:</label>
-				<input type="number" name="fingerid" id="fingerid" placeholder="User Fingerprint ID...">
+				<input type="number" name="fingerid" id="fingerid" placeholder="ID vân tay...">
 				<button type="button" name="fingerid_add" class="fingerid_add">Thêm ID</button>
 			</fieldset>
 			<fieldset>
@@ -74,7 +74,7 @@ if (!isset($_SESSION['Admin-name'])) {
 	      	</label >
 			</fieldset>
 			<button type="button" name="user_add" class="user_add">Thêm học sinh</button>
-			<!--<button type="button" name="user_upd" class="user_upd">Cập nhật thông tin</button>-->
+			<button type="button" name="user_upd" class="user_upd">Cập nhật thông tin</button>
 			<button type="button" name="user_rmo" class="user_rmo">Xóa</button>
 		</form>
 	</div>

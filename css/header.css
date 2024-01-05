@@ -4,8 +4,7 @@
 }
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
 body{
-    background: -webkit-linear-gradient(left, #0e251f, #21a0ab);
-    background: linear-gradient(to right, #23555c, #21a0ab);
+    background: #f8f5f2;
     font-family: 'Roboto', sans-serif;
     margin: 0;
     font-size: 15px;
@@ -37,7 +36,7 @@ header, main {
   text-decoration: none; 
   font-family: Luminari, fantasy;
   font-size: 25px;
-  color: #000000;
+  color: #232323;
   font-style: italic;
   text-align: center;
   line-height: 15px;
@@ -70,7 +69,7 @@ header, main {
 
 .topnav {
   overflow: hidden;
-  background-color: #187881;
+  background-color: #078080;
 }
 
 .topnav a {
@@ -123,7 +122,8 @@ header, main {
     text-align: left;
   }
 }	
+/*dat mau cho cac hang trong bang lich su "even" la hang chan "odd" la hang le*/
 tbody tr:nth-child(even){background-color: #388994;}
 tbody tr:nth-child(odd){background-color: #3f9aa6;}
-
+/*dieu chinh opacity khi cuon bang*/
 tbody tr:hover {opacity: 0.8;}

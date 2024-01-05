@@ -11,8 +11,9 @@ if (!isset($_SESSION['Admin-name'])) {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Users Logs</title>
+  <title>Lịch Sử</title>
   <link rel="stylesheet" type="text/css" href="css/userslog.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
   <?php include 'header.php'; ?> 

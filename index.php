@@ -10,7 +10,7 @@ if (!isset($_SESSION['Admin-name'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Users</title>
+  <title>Học sinh</title>
 <link rel="stylesheet" type="text/css" href="css/Users.css">
 <script>
   $(window).on("load resize ", function() {
@@ -33,8 +33,8 @@ if (!isset($_SESSION['Admin-name'])) {
           <th>MSV</th>
           <th>Giới Tính</th>
           <th>ID vân tay</th>
-          <th>Ngày</th>
-          <th>Giời đăng kí</th>
+          <th>Ngày đăng kí</th>
+          <th>Giờ đăng kí</th>
         </tr>
       </thead>
     </table>

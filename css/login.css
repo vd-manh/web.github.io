@@ -2,7 +2,7 @@ h1{
   font-size: 28px !important;
   color: #000;
   font-weight: 300;
-  font-family: New Century Schoolbook, TeX Gyre Schola, serif !important;
+  font-family:  "Roboto", sans-serif;
   text-align: center;
   margin: 15px;
   padding-top: 20px;
@@ -12,6 +12,7 @@ h1{
   padding: 30px 0 0;
   margin: auto;
 }
+/*khung nen dang nhap*/
  .form {
   position: relative;
   z-index: 1;
@@ -20,8 +21,8 @@ h1{
   margin: 0 auto;
   padding: 40px;
   text-align: center;
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0 25px;
+  /*box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 10px 10px 0 rgba(0, 0, 0, 0.1);*/
+  border-radius:  25px;
 }
  .form input {
   font-family: "Roboto", sans-serif;
@@ -33,7 +34,7 @@ h1{
   padding: 15px;
   box-sizing: border-box;
   font-size: 15px;
-  border-radius: 0 25px;
+  border-radius:  25px;
 }
  .form button {
   font-family: "Roboto", sans-serif;
@@ -48,7 +49,7 @@ h1{
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-  border-radius: 0 25px;
+  border-radius:  25px;
 }
 .form button:hover,.form button:active,.form button:focus {
   background: #067979;
@@ -117,6 +118,7 @@ h1{
 } 
 .slideInDown {
   animation-name: slideInDown;
+  
 }
 .animated {
   animation-duration: 1s;
@@ -135,8 +137,7 @@ h1{
     transform: translate3d(0, 0, 0);
   }
 }
-@keyframes 
-{
+@keyframes ten-hieu-ung {
   from {
     transform: translate3d(0, 100%, 0);
     visibility: visible;
@@ -147,7 +148,8 @@ h1{
   }
 }
 
-/* Extra Small Devices, Phones */ 
+
+/* neu nhu la thiet bi dien thoai*/ 
 @media only screen and (max-width : 480px) {
    .login-page {
     width: 100%;

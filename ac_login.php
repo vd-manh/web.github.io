@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
 				}
 				else{
 	                
-					header("location: login.php?error=sai mật khẩu");
+					header("location: login.php?error=wrongpassword");
   					exit();
 				}
 			}
